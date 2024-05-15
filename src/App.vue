@@ -2,6 +2,7 @@
   <h1>TODO APP</h1>
   <TodoItem v-for="todo in todos" :key="todo.id" :todo="todo" @toggle-completed="handleToggleCompleted">
   </TodoItem>
+  <button @click="addTodos()">Add 100 Todos</button>
 </template>
 
 <script>
@@ -30,6 +31,15 @@ export default {
       if (todo) {
         // Update the completed status of the todo item
         todo.completed = completed;
+      }
+    },
+    addTodos(){
+      for(let i = 0; i < 100; i++){
+        this.todos.push({
+          id: this.todos.length + 1,
+          title: `Todo ${this.todos.length + 1}`,
+          completed: false
+        });
       }
     }
   }
